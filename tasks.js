@@ -138,7 +138,7 @@ const stones = [
 ];
 
 const calcTotalPrice = (stones, stonesName) => {
-    stones.length = 0
+    // stones.length = 0
     for (const stone of stones) {
         if (stone.name === stonesName) {
             return stone.price * stone.quantity;
