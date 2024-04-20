@@ -160,20 +160,106 @@ return `${stonesName} was not found`
 //showProduct(product) - коллбек приймаючий об'єкт
 //продукту і логірующий їх у консоль
 
-const products = [];
-const makeProduct = (name, price, callback) => {
-    const product = {
-        name,
-        price,
-        id: Math.random(),
-    }
-    callback(product)
+// const products = [];
+// const makeProduct = (name, price, callback) => {
+//     const product = {
+//         name,
+//         price,
+//         id: Math.random(),
+//     }
+//     callback(product)
+// }
+
+// const showProduct = (product) => {
+//     console.log(product);
+//     products.push(product);
+// }
+
+// makeProduct("Iphone", 1000, showProduct)
+// console.log(products)
+
+/*
+Завдання 2
+Після натискання кнопки "SWAP ME" здійснюється обмін вмістом між двома інпутами.
+Ви можете натиснути на неї кілька разів або вручну змінити вміст інпутів.
+*/
+
+// const refs = {
+//     btnSwapMe: document.querySelector('#swapButton'),
+//     inputLeft: document.querySelector('#leftSwapInput'),
+//     inputRight: document.querySelector('#rightSwapInput'),
+// }
+
+// refs.btnSwapMe.addEventListener('click', onBtnSwapMeClick);
+// function onBtnSwapMeClick(event) {
+//     const valueLeft = refs.inputLeft.value;
+//     refs.inputLeft.value = refs.inputRight.value;
+//     refs.inputRight.value = valueLeft;
+// }
+
+/*
+Завдання 3
+Кнопка "Приховати" ховає текст і замінює назву кнопки на
+"Розкрити", при повторному натисканні текст знову стає доступним
+і кнопка набуває початкового вигляду.
+*/
+
+// const refs = {
+//     taskTitle: document.querySelector('.taskTitle'),
+//     passwordButton: document.querySelector('#passwordButton'),
+// }
+
+// refs.passwordButton.addEventListener('clicl', onBtnChangeText);
+
+// function onBtnChangeText(event) {
+//     if (refs.passwordButton.textContent === 'Розкрити') {
+//         refs.taskTitle.style.display = 'block';
+//         refs.passwordButton.textContent = 'Приховати';
+//         return;
+//     }
+//     refs.taskTitle.style.display = 'none';
+//     refs.passwordButton.textContent = 'Розкрити';
+// }
+
+/*
+Завдання 6
+Натиснувши кнопку "Подвоювати", збільшити значення
+у кожному елементі списку у 2 рази (я змінив умову, додавши в рядок рх)
+*/
+
+// const btnDouble = document.querySelector('#double');
+// const itemsEl = document.querySelectorAll('.listItem');
+// btnDouble.addEventListener('click', onBtnDoubleClick);
+
+// function onBtnDoubleClick(event) {
+//     itemsEl.forEach(itemEl => {
+//         const value = parseInt(itemEl.textContent);
+//         itemEl.textContent = `${value + 2} px`;
+//      })
+//     }
+
+// console.log(itemsEl)
+
+// При натисканні на кожну з кнопок підсумовуються значення з data-атрибутів.
+// За натисканням на кнопку "Вивести результат" виводиться сума значення, а також статистика з
+// інформацією про те, яка кнопка була натиснута скільки разів.
+// */
+
+const refs = {
+    resultButton: document.querySelector('#resultButton'),
+    statList: document.querySelector('.statList'),
+    resultSection: document.querySelector('#resultSection'),
 }
 
-const showProduct = (product) => {
-    console.log(product);
-    products.push(product);
-}
+refs.statList.addEventListener('click', onStatListClick);
+// refs.resultButton.addEventListener('click', onResultButtonClick);
 
-makeProduct("Iphone", 1000, showProduct)
-console.log(products)
+let summ = 0;
+let ClickNumber = {};
+
+function onStatListClick(event) {
+    const number = parseInt(event.target.dataset.number);
+    summ += number;
+    console.log(summ)
+    ClickNumber[event.target.textContent] = (ClickNumber[event.target.textContent] || 0) + 1;
+}
